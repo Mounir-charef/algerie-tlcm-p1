@@ -11,6 +11,9 @@ class Dot(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     name = models.CharField(max_length=40)
 
+    def __str__(self):
+        return self.name
+
 
 def base_dot():
     return Dot.objects.get(name='ALGER CENTRE')
@@ -30,6 +33,9 @@ class User(AbstractUser):
             self.role = self.base_role
             self.dot = base_dot()
             return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f" {self.username} : {self.dot} "
 
 
 class UtilisateurManager(BaseUserManager):
@@ -55,6 +61,9 @@ class UtilisateurProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     utilisateur_id = models.IntegerField(null=True, blank=True)
 
+    def __str__(self):
+        return self.user.username
+
 
 @receiver(post_save, sender=Utilisateur)
 def create_user_profil(sender, instance, created, **kwargs):
@@ -66,3 +75,6 @@ class Cmp(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     dot = models.ForeignKey(Dot, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
