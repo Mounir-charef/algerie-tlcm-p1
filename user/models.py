@@ -25,14 +25,8 @@ class User(AbstractUser):
         UTILISATEUR = "USER", "User"
 
     base_role = Role.CENTRAL
-    role = models.CharField(max_length=50, choices=Role.choices)
-    dot = models.ForeignKey(Dot, on_delete=models.CASCADE)
-
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.role = self.base_role
-            self.dot = base_dot()
-            return super().save(*args, **kwargs)
+    role = models.CharField(max_length=50, choices=Role.choices, default=base_role)
+    dot = models.ForeignKey(Dot, on_delete=models.CASCADE, blank=False, default=base_dot)
 
     def __str__(self):
         return f" {self.username} : {self.dot} "
@@ -47,11 +41,6 @@ class Utilisateur(User):
     base_role = User.Role.UTILISATEUR
 
     utilisateur = UtilisateurManager()
-
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.role = self.base_role
-            return super().save(*args, **kwargs)
 
     class Meta:
         proxy = True
