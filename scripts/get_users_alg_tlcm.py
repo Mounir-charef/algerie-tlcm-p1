@@ -10,7 +10,7 @@ def run():
 
     DOT = defaultdict(list)
 
-    for cell in sheet_obj.iter_rows(min_row=1, min_col=1, max_col=2):
+    for cell in sheet_obj.iter_rows(min_row=13, min_col=1, max_col=2):
         dot, cmd = tuple(map(lambda item: item.value, cell))
         if dot == END_OF_FILE:
             break
@@ -21,7 +21,7 @@ def run():
     with open('static/DOTS.csv', 'w', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['DOT', 'USERS']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+        # writer.writeheader()
         for dot in DOT:
             writer.writerow({'DOT': dot, 'USERS': DOT[dot]})
 

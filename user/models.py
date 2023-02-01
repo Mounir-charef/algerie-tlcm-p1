@@ -44,3 +44,12 @@ class UtilisateurProfile(models.Model):
 def create_user_profil(sender, instance, created, **kwargs):
     if created and instance.role == "USER":
         UtilisateurProfile.objects.create(user=instance)
+
+
+class Dot(models.Model):
+    name = models.CharField(max_length=50)
+
+
+class Cmp(models.Model):
+    name = models.CharField(max_length=50)
+    dot = models.ForeignKey(Dot, on_delete=models.CASCADE)
