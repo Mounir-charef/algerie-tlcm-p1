@@ -18,7 +18,7 @@ def run():
             DOT[dot].append(cmd)
     wb_obj.close()
 
-    with open('static/DOTS.csv', 'w') as csvfile:
+    with open('static/DOTS.csv', 'w', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['DOT', 'USERS']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
