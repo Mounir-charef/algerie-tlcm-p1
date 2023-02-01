@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Utilisateur
 
-# Create your views here.
+def homePage(request):
+    pass
+
+def loginPage(request):
+    pass

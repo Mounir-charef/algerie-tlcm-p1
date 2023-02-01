@@ -13,7 +13,6 @@ class User(AbstractUser):
         UTILISATEUR = "USER", "User"
 
     base_role = Role.CENTRAL
-
     role = models.CharField(max_length=50, choices=Role.choices)
 
     def save(self, *args, **kwargs):
