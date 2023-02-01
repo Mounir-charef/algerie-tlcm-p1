@@ -2,7 +2,8 @@ import openpyxl
 import csv
 from collections import defaultdict
 
-def main() :
+
+def main():
     path = '../data/DRGT_AU_26_01_2023.xlsx'
     END_OF_FILE = 'Total Sans Region'
 
@@ -11,13 +12,12 @@ def main() :
 
     DOT = defaultdict(list)
 
-
     for cell in sheet_obj.iter_rows(min_row=1, min_col=1, max_col=2):
-        dot, cmd = tuple(map(lambda item : item.value, cell))  
-        if dot == END_OF_FILE :
+        dot, cmd = tuple(map(lambda item: item.value, cell))
+        if dot == END_OF_FILE:
             break
-        if cmd :
-            DOT[dot].append(cmd) 
+        if cmd:
+            DOT[dot].append(cmd)
     wb_obj.close()
 
     with open('DOTS.csv', 'w') as csvfile:
@@ -26,7 +26,6 @@ def main() :
         writer.writeheader()
         for dot in DOT:
             writer.writerow({'DOT': dot, 'USERS': DOT[dot]})
-
 
 
 if __name__ == '__main__':
