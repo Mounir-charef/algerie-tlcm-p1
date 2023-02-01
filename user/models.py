@@ -13,7 +13,6 @@ class User(AbstractUser):
     base_role = Role.CENTRAL
 
     role = models.CharField(max_length=50, choices=Role.choices)
-    name = models.CharField()
 
     def save(self, *args, **kwargs):
         if not self.pk:
