@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
 # Create your models here.
@@ -13,7 +13,6 @@ class User(AbstractUser):
     base_role = Role.CENTRAL
 
     role = models.CharField(max_length=50, choices=Role.choices)
-    name = models.CharField()
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -21,8 +20,16 @@ class User(AbstractUser):
             return super().save(*args, **kwargs)
 
 
+class UtilisateurManager(BaseUserManager):
+    def get_queryset(self, *args, **kwargs):
+        result = super().get_queryset(*args, **kwargs)
+        return result.filter(role=User.Role.UTILISATEUR)
+
+
 class Utilisateur(User):
     base_role = User.Role.UTILISATEUR
+
+    utilisateur = UtilisateurManager()
 
     class Meta:
         proxy = True
