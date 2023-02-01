@@ -19,11 +19,14 @@ def run():
     wb_obj.close()
 
     with open('static/DOTS.csv', 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['DOT', 'USERS']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        # fieldnames = ['DOT', 'USERS']
+        # writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         # writer.writeheader()
+        writer = csv.writer(csvfile)
         for dot in DOT:
-            writer.writerow({'DOT': dot, 'USERS': DOT[dot]})
+            # writer.writerow({'DOT': dot, 'USERS': DOT[dot]})
+            DOT[dot].insert(0, dot)
+            writer.writerow(DOT[dot])
 
 
 if __name__ == '__main__':

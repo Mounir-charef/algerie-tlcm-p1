@@ -1,61 +1,60 @@
-DOT,USERS
-ALGER CENTRE,"['Ain Naadja', ""Ben M'hidi(Alger)"", 'Bir Khadem', 'Bir Mourad Rais', 'Birtouta', 'Hydra', 'Mustapha']"
-ALGER EST,"['Ain Taya', 'Bab Ezzouar', 'Bordj El Kiffan', 'Bordj El Kiffan 2', 'Bach-Djarah', 'Baraki', 'Bordj El Bahri', 'Dar El Beida', 'Eucalyptus', 'Hussein Dey', 'Kouba', 'Mohammadia(ALG)', 'Oued Smar', 'Reghaia', 'Rouiba', 'Djasr Kassantina', 'El Harrach']"
-ALGER OUEST,"['Ain Benian', 'Bab El Oued', 'Douera', 'Bouzareah', 'Cheraga', 'El Achour', 'El Biar', 'Iben Ziri', 'Ouled Fayet', 'Zeralda', 'Sidi Abdellah', 'Baba Hassen']"
-BLIDA,"['Affroun', 'Blida', 'Blida 2', 'Boufarik', 'Bougara', 'Larbaa', 'Ouled-Yaich', 'Soumaa']"
-MEDEA,"['Beni Slimane', 'Berouaguia', 'Chellalat el Adhaoura', 'Ksar El Boukhari', 'Medea', 'Medea 2']"
-TIPAZA,"['Ahmer El Ain', 'Bou Ismail', 'Cherchell', 'Fouka Vill', 'Gouraya', 'Hadjout', 'Kolea', 'Tipaza']"
-BOUIRA,"['Ain Bessem', 'Bouira', 'Bouira nouvelle ville', 'Lakhdaria', ""M'chedellah"", 'Sour El Ghouzlane']"
-BOUMERDES,"['Bordj Menael', 'Boudouaou', 'Boumerdes', 'Dellys', 'Khemis El Khechna', 'Thenia']"
-TIZI OUZOU,"['Ain El HAMMAM', 'Azazga', 'Draa Ben Khedda', 'Draa El Mizan', 'Larbaa Naiterathen', 'Mekla', 'Ouadhias', 'Tigzirt', 'Tizi Ouzou', 'Tizi Ouzou Nlle Ville']"
-ANNABA,"['Annaba', 'Bouzered', 'El Bouni', 'Plaine Ouest']"
-EL TARF,"['El Kala', 'El Tarf', 'Drean']"
-GUELMA,"['Bouchegouf', 'Guelma1', 'Guelma2', 'Oued Zenati']"
-SOUK AHRAS,"['Lalaouia', 'Sedrata', 'Souk Ahras', 'Taoura']"
-BATNA,"['Ain Touta', 'Arris', 'Barika', 'Batna', 'Batna2', 'El Madher', 'Merouana', ""N'gaous"", 'Tazoult']"
-KHENCHELA,"['Chechar', 'El Mahmel', 'Kais', 'Khenchela']"
-TEBESSA,"['Cheria', 'Bir El Ater', 'Ouenza', 'Tebessa2', 'Tebessa1', 'El Aouinet']"
-CONSTANTINE,"['Ain Smara', 'Ali Mendjeli', 'Belle Vue', 'Hamma Bouziane', 'Khroub', 'Sidi Mabrouk', 'Martyrs', 'Polygone', 'Zighoud Youcef', 'Zouaghi']"
-JIJEL,"['El Milia', 'Jijel', 'Taher', 'Jijel2']"
-MILA,"['Chelghoum', 'ferdjioua', 'Grarem', 'Mila', 'Oued Endja', 'Telaghma']"
-OUM EL BOUAGHI,"['Ain Fakroun', 'Ain-Beida', ""Ain-M'lila"", 'Oum El Bouaghi']"
-SKIKDA,"['Azzaba', 'Collo', 'Harrouch', 'Skikda', 'Skikda2']"
-BORDJ BOU ARREIREDJ,"['Bordj Bou Arreridj Nord', 'Bordj Bou Arreridj Sud', 'Bordj Ghdir', 'Ras El Oued', 'Mansourah']"
-BEJAIA,"['Akbou', 'Aokas', 'Bejaia', 'El Kseur', 'Sidi Aich', 'Seddouk']"
-Msila,"['Boussada', ""M'sila"", 'Sidi Aissa', ""M'sila2""]"
-SETIF,"['Ain Arnet', 'Ain Azel', 'Ain El Kebira', 'Ain Oulmane', 'Bougaa', 'El Eulma', 'Setif', 'Souamaa', 'Setif2', 'El Eulma2']"
-ADRAR,"['Adrar', 'Aoulef', 'Reggane']"
-BECHAR,"['Bechar Est', 'Bechar Ouest']"
-TINDOUF,"['Tindouf', 'Hikma']"
-AIN DEFLA,"['Ain Defla', 'Djendel', 'El Attaf', 'Khemis Miliana', 'Miliana']"
-CHLEF,"['Ain Merane', 'Boukadir', 'Chettia', 'Chlef', 'Oued El Fedda', 'Tenes', 'Chlef Ouest']"
-RELIZANE,"['Mazouna', 'Oued Rhiou', 'Relizane', 'Zemmoura']"
-TIARET,"['Frenda', 'Mahdia', 'Sougueur', 'Tiaret', 'Tiaret2']"
-TISSEMSILT,"['Bordj Bounaama', 'Tissemsilt']"
-El Bayadh,"['Bougtob', 'El Abiodh S/C', 'El Bayadh', 'El Bayadh 2']"
-AIN TEMOUCHENT,"['Ain Timouchent', 'Beni-saf', 'Hamam Bouhadjar', 'El Amria']"
-MASCARA,"['Ghriss', 'Mascara', 'Mohamadia(MAS)', 'Sig', 'Tighennif']"
-MOSTAGANEM,"['Mostaganem', 'Mostaganem 2', 'Sidi Ali', 'Ain Nouissy']"
-ORAN ,"['Akid Abbes', 'Arzew', ""Ben M'hidi(Oran)"", 'Canastel', 'El Yasmine', 'Es-sennia', 'Gdyel', 'Haddadine', 'Hassi Ben Okba', 'Ibn Rouchd', 'Misserghine', 'Oued Tlilat', 'El Makkari']"
-NAAMA,"['Ain Sefra', 'Naâma', 'Mechria']"
-SAIDA,"['Hassana', 'Saida', 'Saida2', 'Youb']"
-Sidi Bel Abbes,"['Ben Badis', 'Sidi Bel Abbes', 'Sidi Bel Abbes2', 'Sidi Djillali', 'Telagh', 'Sfisef']"
-TLEMCEN,"['Bab El Assa', 'Ghazaouet', 'Imama', 'Maghnia', 'Nedroma', 'Ouled Mimoun', 'Remchi', 'Sebdou', 'Tlemcen']"
-BISKRA,"['Biskra', 'Sidi Okba', 'Tolga', 'Biskra2']"
-DJELFA,"['Ain Ouassara', 'Djelfa', 'Djelfa2', 'El Idrissia', 'Hassi Bahbah', 'Messaad']"
-LAGHOUAT,"['Afflou', ""Hassi R'mel"", 'Laghouat', 'Oasis Nord']"
-EL OUED,"['Bayada', 'Debila', 'El Oued', 'El Oued 2', 'Guemar', 'Hassi Khlifa']"
-GHARDAIA,"['Ghardaia', 'Guerrara', 'Ghardaia2', 'Metlili']"
-ILLIZI,"['Ain Amenas', 'Illizi']"
-OUARGLA,"['Hassi Messaoud', 'Ouargla', 'Ouargla 2']"
-TAMANRASSET,['Tamanrasset']
-Beni Abbes,['Beni Abbes']
-Touggourt,['Touggourt']
-Timimoun,['Timimoun']
-In Salah,['Ain Salah']
-In Guezzam,['In Guezzam']
-EL Meniaa,['El Golea']
-El Megheir,"['Djemaa', 'El Megheir']"
-Djanet,['Djanet']
-Bordj Badji Mokhtar,['Bordj Badji Mokhtar']
-Ouled Djellal,['Ouled Djellal']
+ALGER CENTRE,Ain Naadja,Ben M'hidi(Alger),Bir Khadem,Bir Mourad Rais,Birtouta,Hydra,Mustapha
+ALGER EST,Ain Taya,Bab Ezzouar,Bordj El Kiffan,Bordj El Kiffan 2,Bach-Djarah,Baraki,Bordj El Bahri,Dar El Beida,Eucalyptus,Hussein Dey,Kouba,Mohammadia(ALG),Oued Smar,Reghaia,Rouiba,Djasr Kassantina,El Harrach
+ALGER OUEST,Ain Benian,Bab El Oued,Douera,Bouzareah,Cheraga,El Achour,El Biar,Iben Ziri,Ouled Fayet,Zeralda,Sidi Abdellah,Baba Hassen
+BLIDA,Affroun,Blida,Blida 2,Boufarik,Bougara,Larbaa,Ouled-Yaich,Soumaa
+MEDEA,Beni Slimane,Berouaguia,Chellalat el Adhaoura,Ksar El Boukhari,Medea,Medea 2
+TIPAZA,Ahmer El Ain,Bou Ismail,Cherchell,Fouka Vill,Gouraya,Hadjout,Kolea,Tipaza
+BOUIRA,Ain Bessem,Bouira,Bouira nouvelle ville,Lakhdaria,M'chedellah,Sour El Ghouzlane
+BOUMERDES,Bordj Menael,Boudouaou,Boumerdes,Dellys,Khemis El Khechna,Thenia
+TIZI OUZOU,Ain El HAMMAM,Azazga,Draa Ben Khedda,Draa El Mizan,Larbaa Naiterathen,Mekla,Ouadhias,Tigzirt,Tizi Ouzou,Tizi Ouzou Nlle Ville
+ANNABA,Annaba,Bouzered,El Bouni,Plaine Ouest
+EL TARF,El Kala,El Tarf,Drean
+GUELMA,Bouchegouf,Guelma1,Guelma2,Oued Zenati
+SOUK AHRAS,Lalaouia,Sedrata,Souk Ahras,Taoura
+BATNA,Ain Touta,Arris,Barika,Batna,Batna2,El Madher,Merouana,N'gaous,Tazoult
+KHENCHELA,Chechar,El Mahmel,Kais,Khenchela
+TEBESSA,Cheria,Bir El Ater,Ouenza,Tebessa2,Tebessa1,El Aouinet
+CONSTANTINE,Ain Smara,Ali Mendjeli,Belle Vue,Hamma Bouziane,Khroub,Sidi Mabrouk,Martyrs,Polygone,Zighoud Youcef,Zouaghi
+JIJEL,El Milia,Jijel,Taher,Jijel2
+MILA,Chelghoum,ferdjioua,Grarem,Mila,Oued Endja,Telaghma
+OUM EL BOUAGHI,Ain Fakroun,Ain-Beida,Ain-M'lila,Oum El Bouaghi
+SKIKDA,Azzaba,Collo,Harrouch,Skikda,Skikda2
+BORDJ BOU ARREIREDJ,Bordj Bou Arreridj Nord,Bordj Bou Arreridj Sud,Bordj Ghdir,Ras El Oued,Mansourah
+BEJAIA,Akbou,Aokas,Bejaia,El Kseur,Sidi Aich,Seddouk
+Msila,Boussada,M'sila,Sidi Aissa,M'sila2
+SETIF,Ain Arnet,Ain Azel,Ain El Kebira,Ain Oulmane,Bougaa,El Eulma,Setif,Souamaa,Setif2,El Eulma2
+ADRAR,Adrar,Aoulef,Reggane
+BECHAR,Bechar Est,Bechar Ouest
+TINDOUF,Tindouf,Hikma
+AIN DEFLA,Ain Defla,Djendel,El Attaf,Khemis Miliana,Miliana
+CHLEF,Ain Merane,Boukadir,Chettia,Chlef,Oued El Fedda,Tenes,Chlef Ouest
+RELIZANE,Mazouna,Oued Rhiou,Relizane,Zemmoura
+TIARET,Frenda,Mahdia,Sougueur,Tiaret,Tiaret2
+TISSEMSILT,Bordj Bounaama,Tissemsilt
+El Bayadh,Bougtob,El Abiodh S/C,El Bayadh,El Bayadh 2
+AIN TEMOUCHENT,Ain Timouchent,Beni-saf,Hamam Bouhadjar,El Amria
+MASCARA,Ghriss,Mascara,Mohamadia(MAS),Sig,Tighennif
+MOSTAGANEM,Mostaganem,Mostaganem 2,Sidi Ali,Ain Nouissy
+ORAN ,Akid Abbes,Arzew,Ben M'hidi(Oran),Canastel,El Yasmine,Es-sennia,Gdyel,Haddadine,Hassi Ben Okba,Ibn Rouchd,Misserghine,Oued Tlilat,El Makkari
+NAAMA,Ain Sefra,Naâma,Mechria
+SAIDA,Hassana,Saida,Saida2,Youb
+Sidi Bel Abbes,Ben Badis,Sidi Bel Abbes,Sidi Bel Abbes2,Sidi Djillali,Telagh,Sfisef
+TLEMCEN,Bab El Assa,Ghazaouet,Imama,Maghnia,Nedroma,Ouled Mimoun,Remchi,Sebdou,Tlemcen
+BISKRA,Biskra,Sidi Okba,Tolga,Biskra2
+DJELFA,Ain Ouassara,Djelfa,Djelfa2,El Idrissia,Hassi Bahbah,Messaad
+LAGHOUAT,Afflou,Hassi R'mel,Laghouat,Oasis Nord
+EL OUED,Bayada,Debila,El Oued,El Oued 2,Guemar,Hassi Khlifa
+GHARDAIA,Ghardaia,Guerrara,Ghardaia2,Metlili
+ILLIZI,Ain Amenas,Illizi
+OUARGLA,Hassi Messaoud,Ouargla,Ouargla 2
+TAMANRASSET,Tamanrasset
+Beni Abbes,Beni Abbes
+Touggourt,Touggourt
+Timimoun,Timimoun
+In Salah,Ain Salah
+In Guezzam,In Guezzam
+EL Meniaa,El Golea
+El Megheir,Djemaa,El Megheir
+Djanet,Djanet
+Bordj Badji Mokhtar,Bordj Badji Mokhtar
+Ouled Djellal,Ouled Djellal

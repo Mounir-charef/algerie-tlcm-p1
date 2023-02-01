@@ -2,9 +2,18 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import uuid
 
 
 # Create your models here.
+
+class Dot(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    name = models.CharField(max_length=40)
+
+
+def base_dot():
+    return Dot.objects.get(name='ALGER CENTRE')
 
 
 class User(AbstractUser):
@@ -14,10 +23,12 @@ class User(AbstractUser):
 
     base_role = Role.CENTRAL
     role = models.CharField(max_length=50, choices=Role.choices)
+    dot = models.ForeignKey(Dot, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         if not self.pk:
             self.role = self.base_role
+            self.dot = base_dot()
             return super().save(*args, **kwargs)
 
 
@@ -30,6 +41,11 @@ class Utilisateur(User):
     base_role = User.Role.UTILISATEUR
 
     utilisateur = UtilisateurManager()
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.base_role
+            return super().save(*args, **kwargs)
 
     class Meta:
         proxy = True
@@ -46,10 +62,7 @@ def create_user_profil(sender, instance, created, **kwargs):
         UtilisateurProfile.objects.create(user=instance)
 
 
-class Dot(models.Model):
-    name = models.CharField(max_length=50)
-
-
 class Cmp(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     dot = models.ForeignKey(Dot, on_delete=models.CASCADE)

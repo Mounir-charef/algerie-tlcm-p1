@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from .models import Utilisateur
 
+
 def homePage(request):
-    pass
+    return HttpResponse('hello')
+
 
 def loginPage(request):
-    pass
+    return HttpResponse('login')
