@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.conf import settings
-from .forms import UserForm, FormWithCaptcha
+from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import urllib
 import json
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.decorators import login_required
+
 
 @login_required(login_url='login')
 def homePage(request):
@@ -20,7 +21,6 @@ def loginPage(request):
         if not request.POST.get('g-recaptcha-response'):
             context = {
                 'form': form,
-                'captcha': FormWithCaptcha()
             }
             messages.info(request, 'The captcha is required')
             return render(request, 'Login.html', context)
@@ -47,7 +47,7 @@ def loginPage(request):
             messages.warning(request, "Username or Password is incorrect")
     context = {
         'form': form,
-        'captcha': FormWithCaptcha()
+
     }
 
     return render(request, 'Login.html', context)

@@ -14,9 +14,9 @@
         <form method="post" class="login-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <div id="captcha-container">
-                {{ captcha.captcha }}
-            </div>
+{#            <div id="captcha-container">#}
+{#                {{ captcha.captcha }}#}
+{#            </div>#}
             <button type="submit" class="btn btn-outline-primary mx-auto">
                 LOG IN
             </button>

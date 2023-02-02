@@ -4,6 +4,9 @@ from captcha.fields import ReCaptchaField
 
 
 class UserForm(forms.ModelForm):
+
+    captcha = ReCaptchaField(label='')
+
     class Meta:
         model = User
         fields = ['username', 'password']
@@ -11,7 +14,3 @@ class UserForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'password': forms.PasswordInput(attrs={'class': 'form-control'})
         }
-
-
-class FormWithCaptcha(forms.Form):
-    captcha = ReCaptchaField()
