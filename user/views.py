@@ -15,10 +15,9 @@ def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        temp = User.objects.get(username=username)
-        print(temp)
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        print(request.POST)
+        if recaptcha_response and (user := authenticate(request, username=username, password=password)) is not None:
             login(request, user)
             return redirect('home')
     form = UserForm()
