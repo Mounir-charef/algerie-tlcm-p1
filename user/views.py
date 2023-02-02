@@ -1,20 +1,16 @@
 from django.shortcuts import render, redirect, HttpResponse
-from .models import User
 from django.conf import settings
 from .forms import UserForm, FormWithCaptcha
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import urllib
 import json
-from django.core.exceptions import BadRequest
 from django.views.decorators.cache import never_cache
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='login')
 def homePage(request):
-    if request.method == 'POST':
-        pass
-
-    return HttpResponse(request.user)
+    return render(request, 'success.html')
 
 
 @never_cache
@@ -45,6 +41,7 @@ def loginPage(request):
 
         if result and (user := authenticate(request, username=username, password=password)) is not None:
             login(request, user)
+            messages.success(request, "Username or Password is incorrect")
             return redirect('home')
         else:
             messages.warning(request, "Username or Password is incorrect")
@@ -54,3 +51,8 @@ def loginPage(request):
     }
 
     return render(request, 'Login.html', context)
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
