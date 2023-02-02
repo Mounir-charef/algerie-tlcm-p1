@@ -6,13 +6,17 @@ def run(file):
     with open(f'static/{file}') as file:
         reader = csv.reader(file)
 
-        Dot.objects.all().delete()
-        Cmp.objects.all().delete()
-
         for row in list(reader):
             dot, *cmps = row
-            print(dot, cmps)
-            temp = Dot.objects.create(name=dot.upper())
+            dot, created = Dot.objects.get_or_create(
+                defaults={
+                    "name": dot.upper()
+                },
+                name=dot.upper()
+            )
             for cmp in cmps:
-                Cmp.objects.create(dot=temp, name=cmp.upper())
+                name = cmp.upper()
+                if Cmp.objects.get(name=name, dot=dot):
+                    continue
 
+                Cmp.objects.create(name=name, dot=dot)
