@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# from django.db.models.signals import post_save
-# from django.dispatch import receiver
 import uuid
 
 
@@ -44,6 +42,13 @@ class Cmp(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class File(models.Model):
+    file_name = models.FileField(upload_to='static')
+
+    def __str__(self):
+        return self.file_name.name.split('/')[1]
 
 # class UtilisateurManager(BaseUserManager):
 #     def get_queryset(self, *args, **kwargs):

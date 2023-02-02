@@ -21,3 +21,4 @@ class Admin(UserAdmin):
 admin.site.register(models.User, Admin)
 admin.site.register(models.Dot)
 admin.site.register(models.Cmp)
+admin.site.register(models.File)

@@ -2,8 +2,9 @@ import openpyxl
 import csv
 from collections import defaultdict
 
-def run():
-    path = 'static/DRGT_AU_26_01_2023.xlsx'
+
+def run(file):
+    path = f'static/{file}'
     END_OF_FILE = 'Total Sans Region'
     wb_obj = openpyxl.load_workbook(path)
     sheet_obj = wb_obj.worksheets[1]
@@ -29,5 +30,3 @@ def run():
             writer.writerow(DOT[dot])
 
 
-if __name__ == '__main__':
-    run()
