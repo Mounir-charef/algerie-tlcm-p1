@@ -37,6 +37,14 @@ class User(AbstractUser):
         return f" {self.username} : {self.dot} "
 
 
+class Cmp(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=50)
+    dot = models.ForeignKey(Dot, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
 # class UtilisateurManager(BaseUserManager):
 #     def get_queryset(self, *args, **kwargs):
 #         return super().get_queryset(*args, **kwargs).filter(role=User.Role.UTILISATEUR)
@@ -63,12 +71,3 @@ class User(AbstractUser):
 # def create_user_profil(sender, instance, created, **kwargs):
 #     if created and instance.role == "USER":
 #         UtilisateurProfile.objects.create(user=instance)
-
-
-class Cmp(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=50)
-    dot = models.ForeignKey(Dot, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name

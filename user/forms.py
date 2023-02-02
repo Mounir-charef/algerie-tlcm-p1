@@ -1,5 +1,6 @@
 from django import forms
 from .models import User
+from captcha.fields import ReCaptchaField
 
 
 class UserForm(forms.ModelForm):
@@ -10,3 +11,7 @@ class UserForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'password': forms.PasswordInput(attrs={'class': 'form-control'})
         }
+
+
+class FormWithCaptcha(forms.Form):
+    captcha = ReCaptchaField()

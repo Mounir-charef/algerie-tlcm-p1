@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import User
-from .forms import UserForm
+from .forms import UserForm, FormWithCaptcha
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -23,7 +23,8 @@ def loginPage(request):
             return redirect('home')
     form = UserForm()
     context = {
-        'form': form
+        'form': form,
+        'captcha': FormWithCaptcha()
     }
 
     return render(request, 'Login.html', context)
