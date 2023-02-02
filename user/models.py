@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from django.contrib.auth.models import AbstractUser
+# from django.db.models.signals import post_save
+# from django.dispatch import receiver
 import uuid
 
 
@@ -20,44 +20,49 @@ def base_dot():
 
 
 class User(AbstractUser):
-    class Role(models.TextChoices):
-        CENTRAL = "ADMIN", "Admin"
-        UTILISATEUR = "USER", "User"
+    # class Role(models.TextChoices):
+    #     CENTRAL = "ADMIN", "Admin"
+    #     UTILISATEUR = "USER", "User"
 
-    base_role = Role.CENTRAL
-    role = models.CharField(max_length=50, choices=Role.choices, default=base_role)
-    dot = models.ForeignKey(Dot, on_delete=models.CASCADE, blank=False, default=base_dot)
+    # base_role = Role.CENTRAL
+    # role = models.CharField(max_length=50, choices=Role.choices, default=base_role)
+    dot = models.ForeignKey(
+        Dot,
+        on_delete=models.CASCADE,
+        blank=False,
+        default=base_dot
+    )
 
     def __str__(self):
         return f" {self.username} : {self.dot} "
 
 
-class UtilisateurManager(BaseUserManager):
-    def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(role=User.Role.UTILISATEUR)
-
-
-class Utilisateur(User):
-    base_role = User.Role.UTILISATEUR
-
-    utilisateur = UtilisateurManager()
-
-    class Meta:
-        proxy = True
-
-
-class UtilisateurProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    utilisateur_id = models.IntegerField(null=True, blank=True)
-
-    def __str__(self):
-        return self.user.username
-
-
-@receiver(post_save, sender=Utilisateur)
-def create_user_profil(sender, instance, created, **kwargs):
-    if created and instance.role == "USER":
-        UtilisateurProfile.objects.create(user=instance)
+# class UtilisateurManager(BaseUserManager):
+#     def get_queryset(self, *args, **kwargs):
+#         return super().get_queryset(*args, **kwargs).filter(role=User.Role.UTILISATEUR)
+#
+#
+# class Utilisateur(User):
+#     base_role = User.Role.UTILISATEUR
+#
+#     utilisateur = UtilisateurManager()
+#
+#     class Meta:
+#         proxy = True
+#
+#
+# class UtilisateurProfile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     utilisateur_id = models.IntegerField(null=True, blank=True)
+#
+#     def __str__(self):
+#         return self.user.username
+#
+#
+# @receiver(post_save, sender=Utilisateur)
+# def create_user_profil(sender, instance, created, **kwargs):
+#     if created and instance.role == "USER":
+#         UtilisateurProfile.objects.create(user=instance)
 
 
 class Cmp(models.Model):
