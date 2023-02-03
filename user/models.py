@@ -29,12 +29,6 @@ def base_dot():
 
 
 class User(AbstractUser):
-    # class Role(models.TextChoices):
-    #     CENTRAL = "ADMIN", "Admin"
-    #     UTILISATEUR = "USER", "User"
-
-    # base_role = Role.CENTRAL
-    # role = models.CharField(max_length=50, choices=Role.choices, default=base_role)
     dot = models.ForeignKey(
         Dot,
         on_delete=models.CASCADE,
