@@ -94,13 +94,14 @@ def add_information_dot(sender, instance, created, **kwargs):
         defaults={'date': instance.date, 'dot_id': dot.id}
     )
 
-    temp.total_raccordement_client += instance.total_raccordement_client
-    temp.auto += instance.auto
-    temp.binome += instance.binome
-    temp.dhdb += instance.dhdb
-    temp.ftth += instance.ftth
-    temp.sans_specialite += instance.sans_specialite
-    temp.q_o_s += instance.q_o_s
-    temp.norme += instance.norme
-    temp.objectif += instance.objectif
-    temp.save()
+    if created:
+        temp.total_raccordement_client += instance.total_raccordement_client
+        temp.auto += instance.auto
+        temp.binome += instance.binome
+        temp.dhdb += instance.dhdb
+        temp.ftth += instance.ftth
+        temp.sans_specialite += instance.sans_specialite
+        temp.q_o_s += instance.q_o_s
+        temp.norme += instance.norme
+        temp.objectif += instance.objectif
+        temp.save()
