@@ -12,6 +12,11 @@ body{
     padding: 1.7rem;
     border-radius: 5px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 0 -1px 39px -5px rgba(66,66,66,0.78);
+    -moz-box-shadow: 0 -1px 39px -5px rgba(66,66,66,0.78);
+    box-shadow: 0 -1px 39px -5px rgba(66,66,66,0.78);
 }
 
 .login-form {
@@ -23,6 +28,11 @@ body{
 .helptext{
     color: rgba(0,0,0,.6);
     font-size: small;
+}
+
+#logo{
+    margin-bottom: 2rem;
+    align-self: center;
 }
 
 form > .g-recaptcha{

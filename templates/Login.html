@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="container main-div">
+        <img id="logo" src="{% static 'images/alg_tlcm_logo.png' %}">
         <form method="post" class="login-form">
             {% csrf_token %}
             {{ form.as_p }}
