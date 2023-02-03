@@ -79,29 +79,3 @@ class File(models.Model):
     def __str__(self):
         return self.file_name.name.split('/')[1]
 
-# class UtilisateurManager(BaseUserManager):
-#     def get_queryset(self, *args, **kwargs):
-#         return super().get_queryset(*args, **kwargs).filter(role=User.Role.UTILISATEUR)
-#
-#
-# class Utilisateur(User):
-#     base_role = User.Role.UTILISATEUR
-#
-#     utilisateur = UtilisateurManager()
-#
-#     class Meta:
-#         proxy = True
-#
-#
-# class UtilisateurProfile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     utilisateur_id = models.IntegerField(null=True, blank=True)
-#
-#     def __str__(self):
-#         return self.user.username
-#
-#
-# @receiver(post_save, sender=Utilisateur)
-# def create_user_profil(sender, instance, created, **kwargs):
-#     if created and instance.role == "USER":
-#         UtilisateurProfile.objects.create(user=instance)
