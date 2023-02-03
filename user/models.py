@@ -57,10 +57,12 @@ class Information(models.Model):
     binome = models.IntegerField(default=0)
     dhdb = models.IntegerField(default=0)
     ftth = models.IntegerField(default=0)
+    la_ls = models.IntegerField(default=0)
     sans_specialite = models.IntegerField(default=0)
-    q_o_s = models.IntegerField(default=0)
-    norme = models.IntegerField(default=0)
-    objectif = models.IntegerField(default=0)
+    total = models.IntegerField(default=0)
+    q_o_s = models.FloatField(default=0)
+    norme = models.FloatField(default=0)
+    objectif = models.FloatField(default=0)
 
     def __str__(self):
         return f'data de {self.cmp} le {self.date}'
@@ -75,10 +77,12 @@ class InformationDot(models.Model):
     binome = models.IntegerField(default=0)
     dhdb = models.IntegerField(default=0)
     ftth = models.IntegerField(default=0)
+    la_ls = models.IntegerField(default=0)
     sans_specialite = models.IntegerField(default=0)
-    q_o_s = models.IntegerField(default=0)
-    norme = models.IntegerField(default=0)
-    objectif = models.IntegerField(default=0)
+    total = models.IntegerField(default=0)
+    q_o_s = models.FloatField(default=0)
+    norme = models.FloatField(default=0)
+    objectif = models.FloatField(default=0)
 
     def __str__(self):
         return f'data de {self.dot} le {self.date}'
@@ -101,6 +105,7 @@ def add_information_dot(sender, instance, created, **kwargs):
         temp.dhdb += instance.dhdb
         temp.ftth += instance.ftth
         temp.sans_specialite += instance.sans_specialite
+        temp.total += instance.total
         temp.q_o_s += instance.q_o_s
         temp.norme += instance.norme
         temp.objectif += instance.objectif
