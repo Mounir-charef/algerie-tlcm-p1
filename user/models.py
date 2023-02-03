@@ -20,10 +20,6 @@ class Dot(models.Model):
     norme = models.IntegerField(default=0)
     objectif = models.IntegerField(default=0)
 
-    @property
-    def days(self):
-        return 5
-
     def __str__(self):
         return self.name
 
