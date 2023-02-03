@@ -16,7 +16,7 @@ def run(file):
             )
             for cmp in cmps:
                 name = cmp.upper()
-                if Cmp.objects.get(name=name, dot=dot):
+                if Cmp.objects.filter(name=name, dot=dot).exists():
                     continue
 
                 Cmp.objects.create(name=name, dot=dot)
