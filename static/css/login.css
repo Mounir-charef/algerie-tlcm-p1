@@ -24,6 +24,9 @@ body{
     flex-direction: column;
     gap: .6rem
 }
+.login-form > p > label {
+    font-weight: bolder;
+}
 
 .helptext{
     color: rgba(0,0,0,.6);
