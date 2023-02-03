@@ -74,7 +74,7 @@ def add_data_to_dot(sender, instance, created, **kwargs):
 
 
 class File(models.Model):
-    file_name = models.FileField(upload_to='static')
+    file_name = models.FileField(upload_to='static/files_admin')
 
     def __str__(self):
         return self.file_name.name.split('/')[1]
