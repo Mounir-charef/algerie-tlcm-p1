@@ -3,8 +3,11 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgb(2,0,36);
-    background: linear-gradient(347deg, rgba(2,0,36,1) 0%, rgba(13,13,172,1) 28%, rgba(0,212,255,1) 100%);
+    /*background: rgb(2,0,36);*/
+    /*background: linear-gradient(347deg, rgba(2,0,36,1) 0%, rgba(13,13,172,1) 28%, rgba(0,212,255,1) 100%);*/
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 .main-div {
