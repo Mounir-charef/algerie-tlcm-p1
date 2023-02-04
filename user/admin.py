@@ -18,9 +18,29 @@ class Admin(UserAdmin):
     )
 
 
+class CmpAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+    list_filter = ('dot', )
+
+
+class DotAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+    list_filter = ('name', )
+
+
+class InformationAdmin(admin.ModelAdmin):
+    list_filter = (('date', admin.DateFieldListFilter), 'cmp')
+    date_hierarchy = 'date'
+
+
+class InformationDotAdmin(admin.ModelAdmin):
+    list_filter = (('date', admin.DateFieldListFilter), 'dot')
+    date_hierarchy = 'date'
+
+
 admin.site.register(models.User, Admin)
-admin.site.register(models.Dot)
-admin.site.register(models.Cmp)
+admin.site.register(models.Dot, DotAdmin)
+admin.site.register(models.Cmp, CmpAdmin)
 admin.site.register(models.File)
-admin.site.register(models.Information)
-admin.site.register(models.InformationDot)
+admin.site.register(models.Information, InformationAdmin)
+admin.site.register(models.InformationDot, InformationDotAdmin)
