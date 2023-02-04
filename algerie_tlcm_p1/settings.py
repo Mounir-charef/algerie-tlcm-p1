@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'django_extensions',
-    'captcha'
+    'captcha',
+    'rangefilter',
+    'django_admin_multiple_choice_list_filter',
 ]
 
 MIDDLEWARE = [
@@ -55,8 +57,7 @@ ROOT_URLCONF = 'algerie_tlcm_p1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

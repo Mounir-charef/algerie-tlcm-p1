@@ -65,7 +65,7 @@ class Information(models.Model):
     objectif = models.FloatField(default=0)
 
     def __str__(self):
-        return f'data de {self.cmp} le {self.date}'
+        return f'{self.cmp} le {self.date}'
 
 
 class InformationDot(models.Model):
@@ -85,7 +85,7 @@ class InformationDot(models.Model):
     objectif = models.FloatField(default=0)
 
     def __str__(self):
-        return f'data de {self.dot} le {self.date}'
+        return f'{self.dot} le {self.date}'
 
 
 @receiver(post_save, sender=Information)

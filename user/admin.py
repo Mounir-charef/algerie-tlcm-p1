@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from . import models
+from rangefilter.filters import DateRangeFilter
 
 
 # Register your models here.
@@ -29,12 +30,12 @@ class DotAdmin(admin.ModelAdmin):
 
 
 class InformationAdmin(admin.ModelAdmin):
-    list_filter = (('date', admin.DateFieldListFilter), 'cmp')
+    list_filter = (('date', DateRangeFilter), ('cmp', admin.RelatedFieldListFilter))
     date_hierarchy = 'date'
 
 
 class InformationDotAdmin(admin.ModelAdmin):
-    list_filter = (('date', admin.DateFieldListFilter), 'dot')
+    list_filter = (('date', DateRangeFilter), 'dot')
     date_hierarchy = 'date'
 
 

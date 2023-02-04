@@ -7,7 +7,7 @@ def run(file_name):
     with open(f'static/{file_name}') as file:
         reader = csv.reader(file)
         # date = file_name.split('_')[1]
-        date = datetime.date(2023, 1, 26)
+        date = datetime.date(2023, 6, 15)
         for row in list(reader):
             cmp_name, total, auto, binome, dhdb, ftth, la_ls, sans, total, qos, norme, objecif = row
             cmp = Cmp.objects.get(name=cmp_name.upper())
