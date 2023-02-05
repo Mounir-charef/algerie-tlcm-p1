@@ -74,7 +74,9 @@ def getDotInformations(request):
         dot = Dot.objects.get(name=request.user.dot)
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
-    data = InformationDot.objects.filter(dot=dot).all()
+    month = request.query_params.get('month', datetime.date.today().month)
+    year = request.query_params.get('year', datetime.date.today().year)
+    data = InformationDot.objects.filter(dot=dot, date__month=month, date__year=year).order_by('date')
     srl = serializers.InformationDotSerializer(data, many=True)
     return Response(srl.data)
 
@@ -83,7 +85,9 @@ def getDotInformations(request):
 def getDotInformation(request, pk):
     try:
         dot = Dot.objects.get(id=pk)
-        data = InformationDot.objects.filter(dot=dot).all()
+        month = request.query_params.get('month', datetime.date.today().month)
+        year = request.query_params.get('year', datetime.date.today().year)
+        data = InformationDot.objects.filter(dot=dot, date__month=month, date__year=year).order_by('date')
     except ValidationError:
         return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:
@@ -103,7 +107,7 @@ def getCmpInformations(request):
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
     month = request.query_params.get('month', datetime.date.today().month)
-    year = request.query_params.get('month', datetime.date.today().year)
+    year = request.query_params.get('year', datetime.date.today().year)
     data = Information.objects.filter(cmp__in=cmp, date__month=month, date__year=year).order_by('date')
     srl = serializers.InformationSerializer(data, many=True)
     return Response(srl.data)
@@ -113,7 +117,9 @@ def getCmpInformations(request):
 def getCmpInformation(request, pk):
     try:
         cmp = Cmp.objects.get(id=pk)
-        data = Information.objects.filter(cmp=cmp).all()
+        month = request.query_params.get('month', datetime.date.today().month)
+        year = request.query_params.get('year', datetime.date.today().year)
+        data = Information.objects.filter(cmp=cmp, date__month=month, date__year=year).order_by('date')
     except ValidationError:
         return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:
