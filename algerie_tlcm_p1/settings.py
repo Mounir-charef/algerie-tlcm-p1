@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'captcha',
     'rangefilter',
     'django_admin_multiple_choice_list_filter',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
