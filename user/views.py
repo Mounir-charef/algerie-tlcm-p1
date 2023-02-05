@@ -13,6 +13,7 @@ from .models import Dot, Cmp, Information, InformationDot
 from rest_framework.decorators import api_view
 from rest_framework import status
 from . import serializers
+import datetime
 
 
 @login_required(login_url='login')
@@ -85,6 +86,8 @@ def getDotInformation(request, pk):
         data = InformationDot.objects.filter(dot=dot).all()
     except ValidationError:
         return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist:
+        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
     srl = serializers.InformationDotSerializer(data, many=True)
     return Response(srl.data)
 
@@ -99,7 +102,9 @@ def getCmpInformations(request):
         cmp = Cmp.objects.filter(dot_id=dot).all()
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
-    data = Information.objects.filter(cmp__in=cmp).all()
+    month = request.query_params.get('month', datetime.date.today().month)
+    year = request.query_params.get('month', datetime.date.today().year)
+    data = Information.objects.filter(cmp__in=cmp, date__month=month, date__year=year).order_by('date')
     srl = serializers.InformationSerializer(data, many=True)
     return Response(srl.data)
 
@@ -109,8 +114,9 @@ def getCmpInformation(request, pk):
     try:
         cmp = Cmp.objects.get(id=pk)
         data = Information.objects.filter(cmp=cmp).all()
-        print(data)
     except ValidationError:
         return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist:
+        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_404_NOT_FOUND)
     srl = serializers.InformationSerializer(data, many=True)
     return Response(srl.data)
