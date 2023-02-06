@@ -23,12 +23,18 @@
             const resp = await fetch('http://127.0.0.1:8000/api/cmps/?month=1');
             const data = await resp.json()
             const binome = data.map(info => info.binome)
+            const cmp_names = await Promise.all(data.map(async info => {
+                const rp = await fetch(`http://127.0.0.1:8000/api/region/${info.cmp}`)
+                return (await rp.json()).name
+            }))
+            console.log(cmp_names)
             console.log(binome)
             let ctx = document.getElementById('graphe1').getContext('2d');
 
             let myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
+                labels: cmp_names,
                 datasets: [{
                     data: binome,
                     backgroundColor: [

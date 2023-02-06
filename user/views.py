@@ -82,6 +82,7 @@ def getDotInformations(request):
 
 
 @api_view(['GET'])
+@login_required
 def getDotInformation(request, pk):
     try:
         dot = Dot.objects.get(id=pk)
@@ -114,6 +115,7 @@ def getCmpInformations(request):
 
 
 @api_view(['GET'])
+@login_required
 def getCmpInformation(request, pk):
     try:
         cmp = Cmp.objects.get(id=pk)
@@ -125,4 +127,29 @@ def getCmpInformation(request, pk):
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_404_NOT_FOUND)
     srl = serializers.InformationSerializer(data, many=True)
+    return Response(srl.data)
+
+
+@api_view(['GET'])
+@login_required
+def getCmpsName(request):
+    try:
+        dot = Dot.objects.get(name=request.user.dot)
+        cmp = Cmp.objects.filter(dot_id=dot).all()
+    except ObjectDoesNotExist:
+        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
+    srl = serializers.CmpSerializer(cmp, many=True)
+    return Response(srl.data)
+
+
+@api_view(['GET'])
+@login_required
+def getCmpName(request, pk):
+    try:
+        cmp = Cmp.objects.get(id=pk)
+    except ValidationError:
+        return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
+    except ObjectDoesNotExist:
+        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_404_NOT_FOUND)
+    srl = serializers.CmpSerializer(cmp, many=False)
     return Response(srl.data)
