@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from . import models
 
 
@@ -21,12 +21,19 @@ class CmpSerializer(ModelSerializer):
 
 
 class InformationSerializer(ModelSerializer):
+    cmp_name = SerializerMethodField(source='get_cmp_name')
+
+    def get_cmp_name(self, obj):
+        return obj.cmp.name
+
     class Meta:
         model = models.Information
         fields = '__all__'
 
 
 class InformationDotSerializer(ModelSerializer):
+    # region = StringRelatedField(many=False)
+
     class Meta:
         model = models.InformationDot
         fields = '__all__'
