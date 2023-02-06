@@ -15,12 +15,13 @@
         <br />
         <canvas id="graphe1" width="300" height="200"></canvas>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script>
 
     <script>
         let input = null;
-        const getData = async () => {
-            const resp = await fetch('http://127.0.0.1:8000/api/cmps/?month=1');
+        const getData = async (url) => {
+            const resp = await fetch(url);
             const data = await resp.json()
             const binome = data.map(info => info.binome)
             const cmp_names = data.map(info => info.cmp)
@@ -62,7 +63,7 @@
 
         }
 
-        getData('https://localhost:8000/api/cmps').catch(err => console.log(err))
+        getData('api/cmps/?month=6').catch(err => console.log(err))
     </script>
   </body>
 </html>

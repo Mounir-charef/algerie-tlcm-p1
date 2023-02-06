@@ -146,10 +146,11 @@ def getCmpsName(request):
 @login_required
 def getCmpName(request, pk):
     try:
-        cmp = Cmp.objects.get(id=pk)
+        dot = Dot.objects.get(id=pk)
+        cmp = Cmp.objects.filter(dot=dot)
     except ValidationError:
         return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_404_NOT_FOUND)
-    srl = serializers.CmpSerializer(cmp, many=False)
+    srl = serializers.CmpSerializer(cmp, many=True)
     return Response(srl.data)
