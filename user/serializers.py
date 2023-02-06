@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from . import models
 
 
@@ -21,34 +21,34 @@ class CmpSerializer(ModelSerializer):
 
 
 class InformationSerializer(ModelSerializer):
-    # cmp_name = SerializerMethodField(source='get_cmp_name')
-    #
-    # @staticmethod
-    # def get_cmp_name(obj):
-    #     return obj.cmp.name
+    cmp_name = SerializerMethodField(source='get_cmp_name')
+
+    @staticmethod
+    def get_cmp_name(obj):
+        return obj.cmp.name
 
     class Meta:
         model = models.Information
         fields = '__all__'
 
-    def to_representation(self, instance):
-        rep = super(InformationSerializer, self).to_representation(instance)
-        rep['cmp'] = instance.cmp.name
-        return rep
+    # def to_representation(self, instance):
+    #     rep = super(InformationSerializer, self).to_representation(instance)
+    #     rep['cmp'] = instance.cmp.name
+    #     return rep
 
 
 class InformationDotSerializer(ModelSerializer):
-    # dot_name = SerializerMethodField(source='get_dot_name')
-    #
-    # @staticmethod
-    # def get_dot_name(obj):
-    #     return obj.dot.name
+    dot_name = SerializerMethodField(source='get_dot_name')
+
+    @staticmethod
+    def get_dot_name(obj):
+        return obj.dot.name
 
     class Meta:
         model = models.InformationDot
         fields = '__all__'
 
-    def to_representation(self, instance):
-        rep = super(InformationDotSerializer, self).to_representation(instance)
-        rep['dot'] = instance.dot.name
-        return rep
+    # def to_representation(self, instance):
+    #     rep = super(InformationDotSerializer, self).to_representation(instance)
+    #     rep['dot'] = instance.dot.name
+    #     return rep
