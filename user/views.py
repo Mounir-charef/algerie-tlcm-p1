@@ -18,7 +18,12 @@ import datetime
 
 @login_required(login_url='login')
 def homePage(request):
-    return render(request, 'success.html')
+    return render(request, 'index.html')
+
+
+# @login_required(login_url='login')
+# def homePage(request):
+#     return render(request, 'success.html')
 
 
 @never_cache
