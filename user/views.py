@@ -110,6 +110,9 @@ def getCmpInformations(request):
     try:
         dot = Dot.objects.get(name=request.user.dot)
         cmp = Cmp.objects.filter(dot_id=dot).all()
+    # except AttributeError:
+    #     dot = Dot.objects.get(name='ALGER CENTRE')
+    #     cmp = Cmp.objects.filter(dot_id=dot).all()
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
     month = request.query_params.get('month', datetime.date.today().month)

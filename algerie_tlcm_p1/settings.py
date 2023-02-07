@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'django_extensions',
+    'corsheaders',
     'captcha',
     'rangefilter',
     'django_admin_multiple_choice_list_filter',
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -131,3 +133,6 @@ RECAPTCHA_PUBLIC_KEY = '6Le-vkAkAAAAAIE_sCIhDnN3GDbAUoZHyWnz1Zhf'
 RECAPTCHA_PRIVATE_KEY = '6Le-vkAkAAAAAGM-H_QYAlgmuEFV73dmHkQtmyMR'
 
 RECAPTCHA_REQUIRED_SCORE = 0.85
+
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:5173"]
+CORS_ALLOW_CREDENTIALS = True
