@@ -83,7 +83,11 @@ def getDotInformations(request):
     year = request.query_params.get('year', datetime.date.today().year)
     data = InformationDot.objects.filter(dot=dot, date__month=month, date__year=year).order_by('date')
     srl = serializers.InformationDotSerializer(data, many=True)
-    return Response(srl.data)
+    srl_user = serializers.UserSerializer(request.user, many=False)
+    return Response({
+        'user': srl_user.data,
+        'data': srl.data
+    })
 
 
 @api_view(['GET'])
@@ -99,7 +103,11 @@ def getDotInformation(request, pk):
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
     srl = serializers.InformationDotSerializer(data, many=True)
-    return Response(srl.data)
+    srl_user = serializers.UserSerializer(request.user, many=False)
+    return Response({
+        'user': srl_user.data,
+        'data': srl.data
+    })
 
 # Cmp data
 
@@ -116,7 +124,11 @@ def getCmpInformations(request):
     year = request.query_params.get('year', datetime.date.today().year)
     data = Information.objects.filter(cmp__in=cmp, date__month=month, date__year=year).order_by('date')
     srl = serializers.InformationSerializer(data, many=True)
-    return Response(srl.data)
+    srl_user = serializers.UserSerializer(request.user, many=False)
+    return Response({
+        'user': srl_user.data,
+        'data': srl.data
+    })
 
 
 @api_view(['GET'])
@@ -132,7 +144,11 @@ def getCmpInformation(request, pk):
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_404_NOT_FOUND)
     srl = serializers.InformationSerializer(data, many=True)
-    return Response(srl.data)
+    srl_user = serializers.UserSerializer(request.user, many=False)
+    return Response({
+        'user': srl_user.data,
+        'data': srl.data
+    })
 
 
 @api_view(['GET'])
@@ -144,7 +160,11 @@ def getCmpsName(request):
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
     srl = serializers.CmpSerializer(cmp, many=True)
-    return Response(srl.data)
+    srl_user = serializers.UserSerializer(request.user, many=False)
+    return Response({
+        'user': srl_user.data,
+        'data': srl.data
+    })
 
 
 @api_view(['GET'])
@@ -158,4 +178,8 @@ def getCmpName(request, pk):
     except ObjectDoesNotExist:
         return Response({'Error': 'failed to fetch data'}, status=status.HTTP_404_NOT_FOUND)
     srl = serializers.CmpSerializer(cmp, many=True)
-    return Response(srl.data)
+    srl_user = serializers.UserSerializer(request.user, many=False)
+    return Response({
+        'user': srl_user.data,
+        'data': srl.data
+    })
