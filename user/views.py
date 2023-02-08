@@ -24,6 +24,7 @@ def homePage(request):
 @never_cache
 def loginPage(request):
     form = UserForm()
+    nxt = request.GET.get("next", '/')
     if request.method == 'POST':
         if not request.POST.get('g-recaptcha-response'):
             context = {
@@ -48,10 +49,10 @@ def loginPage(request):
 
         if result and (user := authenticate(request, username=username, password=password)) is not None:
             login(request, user)
-            messages.success(request, "Username or Password is incorrect")
-            return redirect('home')
+            messages.success(request, "Logged in successfully")
+            return redirect(nxt)
         else:
-            messages.warning(request, "Username or Password is incorrect")
+            messages.warning(request, "Username or Password is incorrect else check the recaptcha")
     context = {
         'form': form,
 
