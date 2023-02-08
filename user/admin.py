@@ -39,6 +39,7 @@ class InformationDotAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
 
 
+admin.site.site_header = 'Algérie Télécom panneau d\'administrateur'
 admin.site.register(models.User, Admin)
 admin.site.register(models.Dot, DotAdmin)
 admin.site.register(models.Cmp, CmpAdmin)
