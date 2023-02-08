@@ -22,9 +22,9 @@
         let input = null;
         const getData = async (url) => {
             const resp = await fetch(url);
-            const data = await resp.json()
-            const binome = data.map(info => info.binome)
-            const cmp_names = data.map(info => info.cmp_name)
+            const ret = await resp.json()
+            const binome = ret.data.map(info => info.binome)
+            const cmp_names = ret.data.map(info => info.cmp_name)
             let ctx = document.getElementById('graphe1').getContext('2d');
 
             let myChart = new Chart(ctx, {
@@ -63,7 +63,7 @@
 
         }
 
-        getData('api/cmps/?month=6').catch(err => console.log(err))
+        getData('api/cmps/?month=1').catch(err => console.log(err))
     </script>
   </body>
 </html>
