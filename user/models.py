@@ -29,7 +29,7 @@ class User(AbstractUser):
     )
 
     def __str__(self):
-        return f" {self.username} : {self.dot}"
+        return f" {self.username}"
 
 
 class Cmp(models.Model):
@@ -39,13 +39,6 @@ class Cmp(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class File(models.Model):
-    file_name = models.FileField(upload_to='static/files_admin')
-
-    def __str__(self):
-        return self.file_name.name.split('/')[1]
 
 
 class Information(models.Model):
@@ -110,3 +103,11 @@ def add_information_dot(sender, instance, created, **kwargs):
         temp.norme += instance.norme
         temp.objectif += instance.objectif
         temp.save()
+
+
+class File(models.Model):
+    file_name = models.FileField(upload_to='static/files_admin')
+    upload_date = models.DateField(default=datetime.datetime.now())
+
+    def __str__(self):
+        return self.file_name.name.split('/')[1]
