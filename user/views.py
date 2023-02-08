@@ -30,7 +30,7 @@ def loginPage(request):
             context = {
                 'form': form,
             }
-            messages.info(request, 'The captcha is required')
+            messages.info(request, 'Le captcha est obligatoire')
             return render(request, 'Login.html', context)
 
         username = request.POST.get('username')
@@ -49,10 +49,11 @@ def loginPage(request):
 
         if result and (user := authenticate(request, username=username, password=password)) is not None:
             login(request, user)
-            messages.success(request, "Logged in successfully")
+            messages.success(request, "Connecté avec succès")
             return redirect(nxt)
         else:
-            messages.warning(request, "Username or Password is incorrect else check the recaptcha")
+            messages.warning(request, "Le nom d'utilisateur ou le mot de passe est incorrect, sinon vérifiez le "
+                                      "captcha")
     context = {
         'form': form,
 
