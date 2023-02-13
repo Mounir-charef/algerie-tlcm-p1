@@ -107,9 +107,9 @@ def add_information_dot(sender, instance, created, **kwargs):
 
 
 class File(models.Model):
-    file_name = models.FileField(upload_to='static/files_admin')
-    upload_date = models.DateField(default=datetime.datetime.now(),
-                                   validators=[FileExtensionValidator(allowed_extensions=['xlsx', 'xls'])])
+    file_name = models.FileField(upload_to='static/files_admin',
+                                 validators=[FileExtensionValidator(allowed_extensions=['xlsx', 'xls'])])
+    upload_date = models.DateField(default=datetime.datetime.now())
 
     def __str__(self):
         return self.file_name.name.split('/')[1]
