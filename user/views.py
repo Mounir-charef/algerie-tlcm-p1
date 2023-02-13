@@ -5,7 +5,6 @@ from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-import urllib
 import json
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.decorators import login_required
@@ -14,6 +13,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from . import serializers
 import datetime
+import requests
 
 
 @login_required(login_url='login')
@@ -38,14 +38,12 @@ def loginPage(request):
         captcha_rs = request.POST.get('g-recaptcha-response')
 
         url = 'https://www.google.com/recaptcha/api/siteverify'
-        params = {
+        data = {
             'secret': settings.RECAPTCHA_PRIVATE_KEY,
             'response': captcha_rs
         }
-        data = urllib.parse.urlencode(params).encode()
-        req = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(req)
-        result = json.loads(response.read().decode())['success']
+        response = requests.post(url, data=data)
+        result = json.loads(response.text)['success']
 
         if result and (user := authenticate(request, username=username, password=password)) is not None:
             login(request, user)
