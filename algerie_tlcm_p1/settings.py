@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['DJANGO_SERVER_KEY']
+SECRET_KEY = 'django-insecure-f^r9j$n5n4yyj3y*#+dsff4^0%nxyzq_5^nru#-2rhsb))erbj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -127,7 +126,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "user.User"
 
-RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+RECAPTCHA_PUBLIC_KEY = '6Le-vkAkAAAAAIE_sCIhDnN3GDbAUoZHyWnz1Zhf'
+RECAPTCHA_PRIVATE_KEY = '6Le-vkAkAAAAAGM-H_QYAlgmuEFV73dmHkQtmyMR'
 
 RECAPTCHA_REQUIRED_SCORE = 0.85
