@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.validators import FileExtensionValidator
+from django.utils.timezone import now
 import uuid
 import datetime
 
@@ -109,7 +110,7 @@ def add_information_dot(sender, instance, created, **kwargs):
 class File(models.Model):
     file_name = models.FileField(upload_to='static/files_admin',
                                  validators=[FileExtensionValidator(allowed_extensions=['xlsx', 'xls'])])
-    upload_date = models.DateField(default=datetime.datetime.now())
+    upload_date = models.DateField(default=now)
 
     def __str__(self):
         return self.file_name.name.split('/')[1]
