@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rangefilter',
     'django_admin_multiple_choice_list_filter',
     'rest_framework',
+    "debug_toolbar"
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'algerie_tlcm_p1.urls'
@@ -130,3 +132,13 @@ RECAPTCHA_PUBLIC_KEY = '6Le-vkAkAAAAAIE_sCIhDnN3GDbAUoZHyWnz1Zhf'
 RECAPTCHA_PRIVATE_KEY = '6Le-vkAkAAAAAGM-H_QYAlgmuEFV73dmHkQtmyMR'
 
 RECAPTCHA_REQUIRED_SCORE = 0.85
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.isAuthenticatedOrReadOnly',
+    ]
+}
