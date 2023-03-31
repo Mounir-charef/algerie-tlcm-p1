@@ -10,7 +10,7 @@ from django.views.decorators.cache import never_cache
 from django.contrib.auth.decorators import login_required
 from .models import Dot, Cmp, Information, InformationDot
 from rest_framework.decorators import api_view
-from rest_framework import status
+from rest_framework import status, viewsets
 from . import serializers
 import datetime
 import requests
@@ -66,84 +66,35 @@ def logoutUser(request):
 
 # Dot Data
 
+class DotViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.InformationDotSerializer
 
-@api_view(['GET'])
-@login_required
-def getDotInformations(request):
-    try:
-        dot = Dot.objects.get(name=request.user.dot)
-    except ObjectDoesNotExist:
-        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
-    month = request.query_params.get('month', datetime.date.today().month)
-    year = request.query_params.get('year', datetime.date.today().year)
-    data = InformationDot.objects.filter(dot=dot, date__month=month, date__year=year).order_by('date')
-    srl = serializers.InformationDotSerializer(data, many=True)
-    srl_user = serializers.UserSerializer(request.user, many=False)
-    return Response({
-        'user': srl_user.data,
-        'data': srl.data
-    }, status=status.HTTP_200_OK)
+    def get_queryset(self):
+        dot = Dot.objects.get(name=self.request.user.dot)
+        month = self.request.query_params.get('month', datetime.date.today().month)
+        year = self.request.query_params.get('year', datetime.date.today().year)
+        return InformationDot.objects.filter(dot=dot, date__month=month, date__year=year).order_by('date')
 
-
-@api_view(['GET'])
-@login_required
-def getDotInformation(request, pk):
-    try:
-        dot = Dot.objects.get(id=pk)
-        month = request.query_params.get('month', datetime.date.today().month)
-        year = request.query_params.get('year', datetime.date.today().year)
-        data = InformationDot.objects.filter(dot=dot, date__month=month, date__year=year).order_by('date')
-    except ValidationError:
-        return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
-    except ObjectDoesNotExist:
-        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
-    srl = serializers.InformationDotSerializer(data, many=True)
-    srl_user = serializers.UserSerializer(request.user, many=False)
-    return Response({
-        'user': srl_user.data,
-        'data': srl.data
-    }, status=status.HTTP_200_OK)
+    # def retrieve(self, request, *args, **kwargs):
+    #     instance = self.get_object()
+    #     serializer = self.get_serializer(instance)
+    #     srl_user = serializers.UserSerializer(request.user, many=False)
+    #     return Response({
+    #         'user': srl_user.data,
+    #         'data': serializer.data
+    #     }, status=status.HTTP_200_OK)
 
 # Cmp data
 
+class CmpViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.InformationSerializer
 
-@api_view(['GET'])
-@login_required
-def getCmpInformations(request):
-    try:
-        dot = Dot.objects.get(name=request.user.dot)
+    def get_queryset(self):
+        dot = Dot.objects.get(name=self.request.user.dot)
         cmp = Cmp.objects.filter(dot_id=dot).all()
-    except ObjectDoesNotExist:
-        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_401_UNAUTHORIZED)
-    month = request.query_params.get('month', datetime.date.today().month)
-    year = request.query_params.get('year', datetime.date.today().year)
-    data = Information.objects.filter(cmp__in=cmp, date__month=month, date__year=year).order_by('date')
-    srl = serializers.InformationSerializer(data, many=True)
-    srl_user = serializers.UserSerializer(request.user, many=False)
-    return Response({
-        'user': srl_user.data,
-        'data': srl.data
-    }, status=status.HTTP_200_OK)
-
-
-@api_view(['GET'])
-@login_required
-def getCmpInformation(request, pk):
-    try:
-        cmp = Cmp.objects.get(id=pk)
-        month = request.query_params.get('month', datetime.date.today().month)
-        year = request.query_params.get('year', datetime.date.today().year)
-        data = Information.objects.filter(cmp=cmp, date__month=month, date__year=year).order_by('date')
-    except ValidationError:
-        return Response({'Error': 'not a valid id'}, status=status.HTTP_404_NOT_FOUND)
-    except ObjectDoesNotExist:
-        return Response({'Error': 'failed to fetch data'}, status=status.HTTP_404_NOT_FOUND)
-    srl = serializers.InformationSerializer(data, many=True)
-    srl_user = serializers.UserSerializer(request.user, many=False)
-    return Response({
-        'user': srl_user.data,
-        'data': srl.data
-    }, status=status.HTTP_200_OK)
+        month = self.request.query_params.get('month', datetime.date.today().month)
+        year = self.request.query_params.get('year', datetime.date.today().year)
+        return Information.objects.filter(cmp__in=cmp, date__month=month, date__year=year).order_by('date')
 
 
 @api_view(['GET'])

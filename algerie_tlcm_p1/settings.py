@@ -139,6 +139,6 @@ INTERNAL_IPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.isAuthenticatedOrReadOnly',
-    ]
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
 }
