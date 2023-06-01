@@ -4,6 +4,16 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import uuid
 import datetime
+from django.core.validators import FileExtensionValidator
+# import os
+# from django.core.exceptions import ValidationError
+
+
+# def validate_file_extension(value):
+#     ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
+#     valid_extensions = ['.xlsx', '.xls']
+#     if not ext.lower() in valid_extensions:
+#         raise ValidationError('Unsupported file extension, only xlsx or xls files.')
 
 
 # Create your models here.
@@ -42,7 +52,8 @@ class Cmp(models.Model):
 
 
 class File(models.Model):
-    file_name = models.FileField(upload_to='static/files_admin')
+    file_name = models.FileField(upload_to='static/files_admin',
+                                 validators=[FileExtensionValidator(allowed_extensions=['xlsx', 'xls'])])
 
     def __str__(self):
         return self.file_name.name.split('/')[1]

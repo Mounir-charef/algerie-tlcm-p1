@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,22 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'django_extensions',
+    'corsheaders',
     'captcha',
     'rangefilter',
     'django_admin_multiple_choice_list_filter',
     'rest_framework',
-    "debug_toolbar"
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'algerie_tlcm_p1.urls'
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'algerie_tlcm_p1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates', os.path.join(BASE_DIR, 'frontend/dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'fr-FR'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -117,9 +118,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
-# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static", os.path.join(BASE_DIR, 'frontend/dist/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, "static_files/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -128,17 +129,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "user.User"
 
-RECAPTCHA_PUBLIC_KEY = '6Le-vkAkAAAAAIE_sCIhDnN3GDbAUoZHyWnz1Zhf'
-RECAPTCHA_PRIVATE_KEY = '6Le-vkAkAAAAAGM-H_QYAlgmuEFV73dmHkQtmyMR'
+RECAPTCHA_PUBLIC_KEY = '6Le-vkAkAAAAAGM-H_QYAlgmuEFV73dmHkQtmyMR'
+RECAPTCHA_PRIVATE_KEY = '6Le-vkAkAAAAAIE_sCIhDnN3GDbAUoZHyWnz1Zhf'
 
 RECAPTCHA_REQUIRED_SCORE = 0.85
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ],
-}
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:5173"]
+CORS_ALLOW_CREDENTIALS = True
