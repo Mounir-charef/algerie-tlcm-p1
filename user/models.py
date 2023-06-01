@@ -5,18 +5,6 @@ from django.dispatch import receiver
 import uuid
 import datetime
 from django.core.validators import FileExtensionValidator
-# import os
-# from django.core.exceptions import ValidationError
-
-
-# def validate_file_extension(value):
-#     ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
-#     valid_extensions = ['.xlsx', '.xls']
-#     if not ext.lower() in valid_extensions:
-#         raise ValidationError('Unsupported file extension, only xlsx or xls files.')
-
-
-# Create your models here.
 
 class Dot(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)

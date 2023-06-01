@@ -75,15 +75,6 @@ class DotViewSet(viewsets.ReadOnlyModelViewSet):
         year = self.request.query_params.get('year', datetime.date.today().year)
         return InformationDot.objects.filter(dot=dot, date__month=month, date__year=year).order_by('date')
 
-    # def retrieve(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     serializer = self.get_serializer(instance)
-    #     srl_user = serializers.UserSerializer(request.user, many=False)
-    #     return Response({
-    #         'user': srl_user.data,
-    #         'data': serializer.data
-    #     }, status=status.HTTP_200_OK)
-
 # Cmp data
 
 class CmpViewSet(viewsets.ReadOnlyModelViewSet):

@@ -13,4 +13,4 @@ urlpatterns = [
     path('chart/', views.homePage, name="chart"),
     path('api/region/', views.getCmpsName, name="cmps_name"),
     path('api/region/<str:pk>/', views.getCmpName, name="cmp_name"),
-]
+] + router.urls
