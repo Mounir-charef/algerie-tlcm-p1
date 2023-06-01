@@ -7,8 +7,9 @@ const ChartPage = () => {
 
     useEffect(() => {
             const getData = async () => {
-            const result = await axios.get('http://127.0.0.1:8000/api/cmps/?month=1', {withCredentials: true});
-            setData(result.data.data)
+            const result = await axios.get('http://127.0.0.1:8000/api/cmp/?month=1', {withCredentials: true});
+            console.log(result)
+            setData(result.data)
         };
             getData().catch(err => console.table(err))
     }, [])
